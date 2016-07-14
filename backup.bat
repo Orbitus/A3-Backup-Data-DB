@@ -34,6 +34,7 @@ set _backuptime=%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4%_%TIME:~0,2%-%TIME:~3,2%
 :: Here you can define if you want a full backup or only a backup of @mods,mpmissions directory 
 set _fullbackup=true
 :: Custom Directorys? You want to save some custom directories? Heres a place to define them
+set _usecustomdirectory=false
 set _customdir01=C:\path\to\custom\dir01
 set _customdir02=C:\path\to\custom\dir02
 set _customdir03=C:\path\to\custom\dir03
@@ -58,7 +59,7 @@ echo Backup files into chosen directory ...
 :: Sleep 10 seconds
 ping -n 10 127.0.0.1 > NUL
 
-if %_usemysqlbackup$% == "true" GOTO MYSQLBACKUP
+if %_usemysqlbackup$% == true GOTO MYSQLBACKUP
 REM Mysql Backup skipped
 	GOTO FILEBACKUP
 :MYSQLBACKUP
@@ -68,12 +69,12 @@ REM Starting MySQL Backup
 :: Sleep 10 seconds
 ping -n 10 127.0.0.1 > NUL
 :FILEBACKUP
-if %_usefilebackup% == "true" GOTO FILEBACKUP2
+if %_usefilebackup% == true GOTO FILEBACKUP2
 REM File Backup skipped
 	GOTO END
 :FILEBACKUP2
 REM Starting File Backup
 :: Sleep 10 seconds
 ping -n 10 127.0.0.1 > NUL
-if %_fullbackup%  == "true" GOTO FULLBACKUP
+if %_fullbackup%  == true GOTO FULLBACKUP
 REM Only the important Data will be saved! For Fullbackup change variable _fullbackup to true!
