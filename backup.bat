@@ -1,4 +1,4 @@
-@echo off
+@echo on
 ::-------------------------------------------::
 :: Arma3 Backup Script                       ::
 :: Made by Orbitus for MRU an nirownation.de ::
@@ -59,7 +59,7 @@ echo Backup files into chosen directory ...
 :: Sleep 10 seconds
 ping -n 10 127.0.0.1 > NUL
 
-if %_usemysqlbackup$% == true GOTO MYSQLBACKUP
+if %_usemysqlbackup% == true GOTO MYSQLBACKUP
 REM Mysql Backup skipped
 	GOTO FILEBACKUP
 :MYSQLBACKUP
